@@ -186,7 +186,7 @@ app.post("/edit-book", (req, res) => {
   const { bookId, title, author, isbn, publisher, pbYear, genre, description, totalCopies, availableCopies } = req.body;
 
   // Update book details in the database based on bookId
-  db.query("UPDATE books SET title = $1, isbn = $3, publisher = $4, pbYear = $5, genre = $6, description = $7, totalCopies = $8, availableCopies = $9 WHERE bookId = $10", [title, author, isbn, publisher, pbYear, genre, description, totalCopies, availableCopies, bookId])
+  db.query("UPDATE book SET title = $1, isbn = $3, publisher = $4, pbYear = $5, genre = $6, description = $7, totalCopies = $8, availableCopies = $9 WHERE bookId = $10;", [title, author, isbn, publisher, pbYear, genre, description, totalCopies, availableCopies, bookId])
       .then(() => {
           // Send success message to client
           res.json({ message: "Book updated successfully" });
