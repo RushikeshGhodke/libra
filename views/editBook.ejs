@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Book</title>
+</head>
+<body>
+    <h1>Edit Book</h1>
+    <input type="number" id="bookIdInput" placeholder="Enter Book ID">
+    <button onclick="fetchBookDetails()">Load Book Data</button>
+
+    <form id="editBookForm" action="/edit-book" method="POST" style="display: none;">
+        <label for="bookId">Book ID:</label>
+        <input type="number" id="bookId" name="bookId" required readonly /><br />
+
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required /><br />
+
+        <label for="author">Author:</label>
+        <input type="text" id="author" name="author" required /><br />
+
+        <label for="isbn">ISBN:</label>
+        <input type="text" id="isbn" name="isbn" required /><br />
+
+        <label for="publisher">Publisher:</label>
+        <input type="text" id="publisher" name="publisher" required /><br />
+
+        <label for="pbYear">Publishing Year:</label>
+        <input type="number" id="pbYear" name="pbYear" required /><br />
+
+        <label for="genre">Genre:</label>
+        <input type="text" id="genre" name="genre" required /><br />
+
+        <label for="description">Description</label>
+        <input type="text" id="description" name="description" required /><br />
+
+        <label for="totalCopies">Total Copies</label>
+        <input type="number" id="totalCopies" name="totalCopies" required /><br />
+
+        <label for="availableCopies">Available Copies</label>
+        <input type="number" id="availableCopies" name="availableCopies" required /><br />
+
+        <button type="submit">Edit Book</button>
+    </form>
+
+    <script>
+        function fetchBookDetails() {
+            const bookId = document.getElementById("bookIdInput").value;
+
+            fetch(`/get-book-details/${bookId}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Book not found");
+                }
+                return response.json();
+            })
+            .then(book => {
+                // Populate form fields with book details
+                document.getElementById("bookId").value = book.bookId;
+                document.getElementById("title").value = book.title;
+                document.getElementById("author").value = book.author;
+                document.getElementById("isbn").value = book.isbn;
+                document.getElementById("publisher").value = book.publisher;
+                document.getElementById("pbYear").value = book.pbYear;
+                document.getElementById("genre").value = book.genre;
+                document.getElementById("description").value = book.description;
+                document.getElementById("totalCopies").value = book.totalCopies;
+                document.getElementById("availableCopies").value = book.availableCopies;
+
+                // Show the edit form
+                document.getElementById("editBookForm").style.display = "block";
+            })
+            .catch(error => {
+                console.error("Error fetching book details:", error);
+                alert("Book not found");
+            });
+        }
+    </script>
+</body>
+</html>

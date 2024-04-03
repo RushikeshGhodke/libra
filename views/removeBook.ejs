@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Remove Book</title>
+  </head>
+  <body>
+    <h1>Remove Book</h1>
+
+    <form id="removeBookBookForm" action="/remove-book" method="DELETE">
+      <label for="bookId">Book ID:</label>
+      <input type="text" id="bookId" name="bookId" required />
+      <button type="submit">Delete Book</button>
+    </form>
+    <button onclick="goBack()">Go Back to Books</button>
+    <script>
+      function goBack() {
+        window.location.href = "/books";
+      }
+    </script>
+  </body>
+</html>

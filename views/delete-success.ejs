@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delete Book Success</title>
+</head>
+<body>
+  <h1>Book Deleted Successfully</h1>
+  <button onclick="goBack()">Go Back to Books</button>
+  <button onclick="addBook()">Add Another Book</button>
+  <button onclick="removeBook()">Remove Another Book</button>
+
+  <script>
+    function goBack() {
+      window.location.href = '/books';
+    }
+
+    function addBook() {
+      window.location.href = '/addBook';
+    }
+
+    function removeBook() {
+      window.location.href = '/removeBook';
+    }
+  </script>
+</body>
+</html>

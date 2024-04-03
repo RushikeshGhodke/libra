@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Books</h1>
+    <div>
+        <button onclick="addBook()">Add Book</button>
+        <button onclick="removeBook()">Remove Book</button>
+        <button onclick="editBook()">Edit Book</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Book ID</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>ISBN</th>
+                <th>Publisher</th>
+                <th>Publication Year</th>
+                <th>Genre</th>
+                <th>Description</th>
+                <th>Total Copies</th>
+                <th>Available Copies</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% books.forEach(book => { %>
+                <tr>
+                    <td><%= book.bookid %></td>
+                    <td><%= book.title %></td>
+                    <td><%= book.author %></td>
+                    <td><%= book.isbn %></td>
+                    <td><%= book.publisher %></td>
+                    <td><%= book.pbYear %></td>
+                    <td><%= book.genre %></td>
+                    <td><%= book.description %></td>
+                    <td><%= book.totalCopies %></td>
+                    <td><%= book.availableCopies %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+    <script>
+        function addBook() {
+            window.location.href = '/addBook';
+        }
+
+        function removeBook() {
+            window.location.href = '/removeBook';
+        }
+
+        function editBook() {
+            window.location.href = '/editBook';
+        }
+    </script>
+    
+</body>
+</html>
